@@ -5,6 +5,7 @@ import {
   Image,
   Dimensions,
   Text,
+  Pressable,
 } from "react-native";
 
 const screenWidth = Dimensions.get("window").width;
@@ -24,15 +25,21 @@ const MoviesList = ({ data, header }) => {
         contentContainerStyle={styles.contentContainer}
       >
         {data.map((item, index) => (
-          <View key={index} style={styles.styleItem}>
-            <Image
-              style={styles.image}
-              source={require("../../assets/customSplash.png")}
-            />
-            <Text style={{ color: "white", fontSize: 16, marginTop: 5 }}>
-              Kerolos
-            </Text>
-          </View>
+          <Pressable
+            key={index}
+            onPress={() => console.log("item", item)}
+            style={({ pressed }) => [{ opacity: pressed ? 0.6 : 1 }]}
+          >
+            <View style={styles.styleItem}>
+              <Image
+                style={styles.image}
+                source={require("../../assets/customSplash.png")}
+              />
+              <Text style={{ color: "white", fontSize: 16, marginTop: 5 }}>
+                Kerolos
+              </Text>
+            </View>
+          </Pressable>
         ))}
       </ScrollView>
     </View>
@@ -47,7 +54,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   styleItem: {
-  display: "flex",
+    display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
