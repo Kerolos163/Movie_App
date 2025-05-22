@@ -7,8 +7,11 @@ import {
   Image,
   Pressable,
 } from "react-native";
+import routes from "../../utils/router";
+import { useNavigation } from "@react-navigation/native";
 
 const Cast = ({ cast }) => {
+  const navigation = useNavigation();
   return (
     <ScrollView
       horizontal
@@ -20,7 +23,7 @@ const Cast = ({ cast }) => {
           <Pressable
             key={index}
             style={({ pressed }) => ({ opacity: pressed ? 0.6 : 1 })}
-            onPress={() => console.log(actor)}
+            onPress={() => navigation.navigate(routes.Person)}
           >
             <View
               key={index}
