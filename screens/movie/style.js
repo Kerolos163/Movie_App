@@ -27,11 +27,27 @@ const styles = StyleSheet.create({
     height: 60,
     zIndex: 1,
   },
+  imageContainer: {
+    position: "absolute",
+    top: 0,
+  },
   imageStyle: {
     width: screenWidth,
     height: screenHeight * 0.55,
+  },
+  titleContainer: {
+    width: screenWidth,
+    height: 60,
     position: "absolute",
-    top: 0,
+    bottom: -10,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1,
+  },
+  titleStyle: {
+    color: "white",
+    fontSize: 30,
+    fontWeight: "bold",
   },
 });
 

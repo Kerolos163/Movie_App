@@ -33,7 +33,7 @@ const MoviesList = ({ data, header }) => {
             <View style={styles.styleItem}>
               <Image
                 style={styles.image}
-                source={require("../../assets/customSplash.png")}
+                source={require("../../assets/demo.jpg")}
               />
               <Text style={{ color: "white", fontSize: 16, marginTop: 5 }}>
                 Kerolos
