@@ -7,12 +7,12 @@ import {
   Text,
   Pressable,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import router from "../../utils/router";
 
 const screenWidth = Dimensions.get("window").width;
-
 const MoviesList = ({ data, header }) => {
-  console.log("data", data);
-  console.log("header", header);
+  const navigation = useNavigation();
   return (
     <View style={styles.wrapper}>
       <View style={styles.upComingStyle}>
@@ -27,7 +27,7 @@ const MoviesList = ({ data, header }) => {
         {data.map((item, index) => (
           <Pressable
             key={index}
-            onPress={() => console.log("item", item)}
+            onPress={() => navigation.navigate(router.Movie)}
             style={({ pressed }) => [{ opacity: pressed ? 0.6 : 1 }]}
           >
             <View style={styles.styleItem}>

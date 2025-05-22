@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import HomePage from "../screens/home/homePage";
+import MoviePage from "../screens/movie/moviePage";
 import routes from "../utils/router";
 
 const Stack = createNativeStackNavigator();
@@ -9,7 +10,8 @@ const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name={routes.Home} component={HomePage} />
+        <Stack.Screen name={routes.Home} component={HomePage} options={{headerShown: false}}/>
+        <Stack.Screen name={routes.Movie} component={MoviePage} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
