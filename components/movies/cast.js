@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -9,9 +9,21 @@ import {
 } from "react-native";
 import routes from "../../utils/router";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import constant from "../../utils/constant";
 
-const Cast = ({ cast }) => {
+const Cast = ({ id }) => {
   const navigation = useNavigation();
+  const [cast, setcast] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${constant.baseUrl}/movie/${id}/credits?api_key=${constant.apiKey}`)
+      .then((res) => {
+        setcast([...res.data.cast]);
+      });
+  }, []);
+
   return (
     <ScrollView
       horizontal
@@ -33,7 +45,7 @@ const Cast = ({ cast }) => {
               }}
             >
               <Image
-                source={require("../../assets/demo.jpg")}
+                source={{uri: `${constant.imageUrl}/${actor.profile_path}`}}
                 style={{
                   width: 100,
                   height: 100,

@@ -10,19 +10,34 @@ import {
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { HeartIcon } from "react-native-heroicons/solid";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import Cast from "./../../components/movies/cast";
 import SilmilarMovies from "../../components/movies/silmilarMovies";
 import constant from "../../utils/constant";
+import axios from "axios";
 
 const MoviePage = () => {
   const { params } = useRoute();
-  console.log("MoviePage data => ", params);
+  // console.log("MoviePage data => ", params);
   const screenWidth = Dimensions.get("window").width;
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
   const [isFavorite, setisFavorite] = useState(false);
+  const allTypes = [];
+  const [AllTypes, setAllTypes] = useState([]);
+  // const [Types, setTypes] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${constant.baseUrl}/genre/movie/list?api_key=${constant.apiKey}`)
+      .then((res) => {
+        // console.log("params.genre_ids => ", params.genre_ids);
+        // console.log("res.data.genres => ", res.data.genres);
+        setAllTypes([...res.data.genres]);
+      
+      });
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.backArrowContainer}>
@@ -64,15 +79,21 @@ const MoviePage = () => {
           />
           <View style={styles.infoContainer}>
             <Text style={styles.titleStyle}>{params.title}</Text>
-            <Text style={styles.releaseStyle}>Release {params.release_date}</Text>
-            <View style={styles.typesContainer}>
-              <Text style={[styles.releaseStyle, { color: "orange" }]}>
-                Action
-              </Text>
-              <Text style={[styles.releaseStyle, { color: "orange" }]}>
-                Action
-              </Text>
-            </View>
+            <Text style={styles.releaseStyle}>
+              Release {params.release_date}
+            </Text>
+            {/* <View style={styles.typesContainer}>
+              {Types.map((item) => {
+                return (
+                  <Text
+                    key={item.id}
+                    style={[styles.releaseStyle, { color: "orange" }]}
+                  >
+                    {item.name}
+                  </Text>
+                );
+              })}
+            </View> */}
           </View>
         </View>
       </View>
@@ -83,13 +104,13 @@ const MoviePage = () => {
         >
           Top Cast
         </Text>
-        <Cast cast={[1, 2, 5, 2, 2]}></Cast>
+        <Cast id={params.id}></Cast>
         <Text
           style={[styles.releaseStyle, { color: "orange", marginLeft: 10 }]}
         >
           Similar Movies
         </Text>
-        <SilmilarMovies movies={[1, 2, 5, 2, 2]}></SilmilarMovies>
+        <SilmilarMovies id={params.id}></SilmilarMovies>
       </View>
     </ScrollView>
   );

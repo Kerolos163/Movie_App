@@ -11,10 +11,12 @@ import { useNavigation } from "@react-navigation/native";
 import router from "../../utils/router";
 import constant from "../../utils/constant";
 
+import React, { useEffect, useState } from "react";
+
 const screenWidth = Dimensions.get("window").width;
 const MoviesList = ({ data, header }) => {
-  console.log("data => ", data);
   const navigation = useNavigation();
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.upComingStyle}>
@@ -26,23 +28,34 @@ const MoviesList = ({ data, header }) => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.contentContainer}
       >
-        {data.map((item, index) => (
-          <Pressable
-            key={index}
-            onPress={() => navigation.navigate(router.Movie,item)}
-            style={({ pressed }) => [{ opacity: pressed ? 0.6 : 1 }]}
-          >
-            <View style={styles.styleItem}>
-              <Image
-                style={styles.image}
-                source={{ uri: `${constant.imageUrl}/${item.poster_path}` }}
-              />
-              <Text style={{ color: "white", fontSize: 16, marginTop: 5 }}>
-                Kerolos
-              </Text>
-            </View>
-          </Pressable>
-        ))}
+        {data.map((item, index) => {
+          return (
+            <Pressable
+              key={index}
+              onPress={() => navigation.navigate(router.Movie, item)}
+              style={({ pressed }) => [{ opacity: pressed ? 0.6 : 1 }]}
+            >
+              <View style={styles.styleItem}>
+                <Image
+                  style={styles.image}
+                  source={{ uri: `${constant.imageUrl}/${item.poster_path}` }}
+                />
+                <Text
+                  style={{
+                    color: "white",
+                    fontSize: 13,
+                    marginTop: 5,
+                    textAlign: "center",
+                    width: 150,
+                    textovverflow: "ellipsis",
+                  }}
+                >
+                  {item.title}
+                </Text>
+              </View>
+            </Pressable>
+          );
+        })}
       </ScrollView>
     </View>
   );
