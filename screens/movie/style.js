@@ -37,16 +37,17 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     width: "100%",
-    height: 60,
+    height: 75,
     position: "absolute",
-    bottom: 50,
+    bottom: 55,
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1,
   },
   titleStyle: {
     color: "white",
-    fontSize: 30,
+    fontSize: 28,
+    textAlign: "center",
     fontWeight: "bold",
   },
   releaseStyle: {

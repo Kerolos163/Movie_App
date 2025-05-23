@@ -9,9 +9,11 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import router from "../../utils/router";
+import constant from "../../utils/constant";
 
 const screenWidth = Dimensions.get("window").width;
 const MoviesList = ({ data, header }) => {
+  console.log("data => ", data);
   const navigation = useNavigation();
   return (
     <View style={styles.wrapper}>
@@ -27,13 +29,13 @@ const MoviesList = ({ data, header }) => {
         {data.map((item, index) => (
           <Pressable
             key={index}
-            onPress={() => navigation.navigate(router.Movie)}
+            onPress={() => navigation.navigate(router.Movie,item)}
             style={({ pressed }) => [{ opacity: pressed ? 0.6 : 1 }]}
           >
             <View style={styles.styleItem}>
               <Image
                 style={styles.image}
-                source={require("../../assets/demo.jpg")}
+                source={{ uri: `${constant.imageUrl}/${item.poster_path}` }}
               />
               <Text style={{ color: "white", fontSize: 16, marginTop: 5 }}>
                 Kerolos
@@ -49,7 +51,7 @@ const MoviesList = ({ data, header }) => {
 const styles = StyleSheet.create({
   wrapper: {
     width: screenWidth - 40,
-    height: 250,
+    height: 300,
     marginTop: 10,
     alignSelf: "center",
   },
@@ -64,12 +66,14 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 150,
-    height: 160,
+    height: 200,
+    borderRadius: 10,
   },
   upComingStyle: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    marginBottom: 10,
   },
   upComingTextStyle: { color: "white", fontSize: 20, fontWeight: "bold" },
   seeAllStyle: {
