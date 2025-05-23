@@ -16,6 +16,7 @@ import Cast from "./../../components/movies/cast";
 import SilmilarMovies from "../../components/movies/silmilarMovies";
 import constant from "../../utils/constant";
 import axios from "axios";
+import storage from "../../utils/local_storage";
 
 const MoviePage = () => {
   const { params } = useRoute();
@@ -26,14 +27,49 @@ const MoviePage = () => {
   const [isFavorite, setisFavorite] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`${constant.baseUrl}/genre/movie/list?api_key=${constant.apiKey}`)
-      .then((res) => {
-        // console.log("params.genre_ids => ", params.genre_ids);
-        // console.log("res.data.genres => ", res.data.genres);
-        setAllTypes([...res.data.genres]);
-      });
+    isFavoriteMovie(params.id);
   }, []);
+
+  const addFavoriteAndSaveLocal = () => {
+    setisFavorite(!isFavorite);
+    addRemoveFavorite(params);
+  };
+
+  const addRemoveFavorite = async (newmovie) => {
+    try {
+      const myMovies = await storage.load({
+        key: "favorite",
+      });
+      const isExist = myMovies.find((item) => item.id === newmovie.id);
+      let newMovies;
+      if (isExist) {
+        newMovies = myMovies.filter((item) => item.id !== newmovie.id);
+      } else {
+        newMovies = [...myMovies, newmovie];
+      }
+      await storage.save({
+        key: "favorite",
+        data: newMovies,
+      });
+    } catch (error) {
+      await storage.save({
+        key: "favorite",
+        data: [newmovie],
+      });
+    }
+  };
+
+  const isFavoriteMovie = async (id) => {
+    const myMovies = await storage.load({
+      key: "favorite",
+    });
+    const isExist = myMovies.find((item) => item.id === id);
+    if (isExist) {
+      setisFavorite(true);
+    } else {
+      setisFavorite(false);
+    }
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -51,7 +87,7 @@ const MoviePage = () => {
               style={styles.backArrowStyle}
             ></ChevronLeftIcon>
           </Pressable>
-          <Pressable onPress={() => setisFavorite(!isFavorite)}>
+          <Pressable onPress={() => addFavoriteAndSaveLocal()}>
             <HeartIcon
               size={40}
               color={isFavorite ? "red" : "white"}
