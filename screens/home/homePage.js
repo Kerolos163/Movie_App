@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { View, Text } from "react-native";
-import CustomHeader from "../../components/Home/customHeader";
+import CustomHeader from "../../components/customHeader";
 import styles from "./style";
 import MoviesList from "../../components/Home/MoviesList";
 import HomeReducer from "../../reducer/homeReducer";

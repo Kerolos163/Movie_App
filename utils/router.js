@@ -3,4 +3,5 @@ export default Object.freeze({
   Movie: "Movie",
   Person: "Person",
   Search: "Search",
+  Favorite: "Favorite",
 });

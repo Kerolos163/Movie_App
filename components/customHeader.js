@@ -4,7 +4,7 @@ import {
   MagnifyingGlassIcon,
 } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
-import router from "../../utils/router";
+import router from "../utils/router";
 
 const CustomHeader = () => {
   const navigation = useNavigation();
