@@ -24,9 +24,7 @@ const MoviePage = () => {
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
   const [isFavorite, setisFavorite] = useState(false);
-  const allTypes = [];
-  const [AllTypes, setAllTypes] = useState([]);
-  // const [Types, setTypes] = useState([]);
+
   useEffect(() => {
     axios
       .get(`${constant.baseUrl}/genre/movie/list?api_key=${constant.apiKey}`)
@@ -34,7 +32,6 @@ const MoviePage = () => {
         // console.log("params.genre_ids => ", params.genre_ids);
         // console.log("res.data.genres => ", res.data.genres);
         setAllTypes([...res.data.genres]);
-      
       });
   }, []);
 
@@ -82,18 +79,6 @@ const MoviePage = () => {
             <Text style={styles.releaseStyle}>
               Release {params.release_date}
             </Text>
-            {/* <View style={styles.typesContainer}>
-              {Types.map((item) => {
-                return (
-                  <Text
-                    key={item.id}
-                    style={[styles.releaseStyle, { color: "orange" }]}
-                  >
-                    {item.name}
-                  </Text>
-                );
-              })}
-            </View> */}
           </View>
         </View>
       </View>

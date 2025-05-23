@@ -9,8 +9,11 @@ import {
 } from "react-native";
 import axios from "axios";
 import constant from "../../utils/constant";
+import { useNavigation } from "@react-navigation/native";
+import routes from "../../utils/router";
 
 const SilmilarMovies = ({ id }) => {
+  const navigation = useNavigation();
   const [movies, setmovies] = useState();
 
   console.log("id => ", id);
@@ -27,14 +30,14 @@ const SilmilarMovies = ({ id }) => {
       horizontal
       showsHorizontalScrollIndicator={false}
       style={{ paddingBottom: 80 }}
-      contentContainerStyle={{ alignItems: "center", padding: 20 }}
+      contentContainerStyle={{ alignItems: "end", padding: 20 }}
     >
       {movies &&
         movies.map((item, index) => (
           <Pressable
             key={index}
             style={({ pressed }) => ({ opacity: pressed ? 0.6 : 1 })}
-            onPress={() => console.log(item)}
+            onPress={() => navigation.push(routes.Movie, item)}
           >
             <View
               key={index}
@@ -46,17 +49,19 @@ const SilmilarMovies = ({ id }) => {
               <Image
                 source={{ uri: `${constant.imageUrl}/${item.poster_path}` }}
                 style={{
-                  width: 150,
-                  height: 160,
+                  width: 160,
+                  height: 170,
                   borderRadius: 10,
+                  paddingBottom: 10,
                 }}
               />
               <Text
                 style={{
                   color: "white",
                   marginTop: 5,
-                  width: 140,
+                  width: 160,
                   fontSize: 13,
+                  textAlign: "center",
                 }}
               >
                 {item.title}

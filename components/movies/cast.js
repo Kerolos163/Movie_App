@@ -28,7 +28,7 @@ const Cast = ({ id }) => {
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={{ alignItems: "center", padding: 10 }}
+      contentContainerStyle={{ alignItems: "end", padding: 10 }}
     >
       {cast &&
         cast.map((actor, index) => (
@@ -52,7 +52,9 @@ const Cast = ({ id }) => {
                   borderRadius: 50,
                 }}
               />
-              <Text style={{ color: "white", marginTop: 5 }}>{actor.name}</Text>
+              <Text style={{ color: "white", marginTop: 5, width: 100, textAlign: "center" }}>
+                {actor.name}
+              </Text>
             </View>
           </Pressable>
         ))}
