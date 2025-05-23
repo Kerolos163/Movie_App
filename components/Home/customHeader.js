@@ -14,7 +14,7 @@ const CustomHeader = () => {
         <Bars3CenterLeftIcon
           size="30"
           color={"white"}
-          onPress={() => console.log("open drawer")}
+          onPress={() => navigation.openDrawer()}
         ></Bars3CenterLeftIcon>
         <View style={{ display: "flex", flexDirection: "row" }}>
           <Text style={{ color: "orange", fontSize: 31, fontWeight: "bold" }}>

@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import HomePage from "../screens/home/homePage";
+import MyDrawer from "./homeNavigation";
 import MoviePage from "../screens/movie/moviePage";
 import Person from "../screens/person/person";
 import Search from "../screens/search/search";
@@ -12,10 +13,26 @@ const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name={routes.Home} component={HomePage} options={{headerShown: false}}/>
-        <Stack.Screen name={routes.Movie} component={MoviePage} options={{headerShown: false}}/>
-        <Stack.Screen name={routes.Person} component={Person} options={{headerShown: false}}/>
-        <Stack.Screen name={routes.Search} component={Search} options={{headerShown: false}}/>
+        <Stack.Screen
+          name={routes.Home}
+          component={MyDrawer}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name={routes.Movie}
+          component={MoviePage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name={routes.Person}
+          component={Person}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name={routes.Search}
+          component={Search}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
