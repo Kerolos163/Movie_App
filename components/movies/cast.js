@@ -35,7 +35,7 @@ const Cast = ({ id }) => {
           <Pressable
             key={index}
             style={({ pressed }) => ({ opacity: pressed ? 0.6 : 1 })}
-            onPress={() => navigation.navigate(routes.Person)}
+            onPress={() => navigation.navigate(routes.Person, actor)}
           >
             <View
               key={index}
@@ -45,7 +45,7 @@ const Cast = ({ id }) => {
               }}
             >
               <Image
-                source={{uri: `${constant.imageUrl}/${actor.profile_path}`}}
+                source={{ uri: `${constant.imageUrl}/${actor.profile_path}` }}
                 style={{
                   width: 100,
                   height: 100,

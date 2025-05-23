@@ -48,6 +48,26 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
   },
+  overviewContainer: {
+    borderWidth: 2,
+    borderColor: "white",
+    boxShadow: "0px 0px 80px rgba(225, 225, 225, 0.85)",
+    padding: 10,
+    margin: 10,
+    marginTop: 50,
+    borderRadius: 20,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  overviewItem:{
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    paddingVertical: 10,
+  }
 });
 
 export default styles;
