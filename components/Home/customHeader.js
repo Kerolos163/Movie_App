@@ -3,12 +3,19 @@ import {
   Bars3CenterLeftIcon,
   MagnifyingGlassIcon,
 } from "react-native-heroicons/outline";
+import { useNavigation } from "@react-navigation/native";
+import router from "../../utils/router";
 
 const CustomHeader = () => {
+  const navigation = useNavigation();
   return (
     <View>
       <View style={styles.header}>
-        <Bars3CenterLeftIcon size="30" color={"white"}></Bars3CenterLeftIcon>
+        <Bars3CenterLeftIcon
+          size="30"
+          color={"white"}
+          onPress={() => console.log("open drawer")}
+        ></Bars3CenterLeftIcon>
         <View style={{ display: "flex", flexDirection: "row" }}>
           <Text style={{ color: "orange", fontSize: 31, fontWeight: "bold" }}>
             M
@@ -17,7 +24,11 @@ const CustomHeader = () => {
             ovies
           </Text>
         </View>
-        <MagnifyingGlassIcon size="30" color={"white"}></MagnifyingGlassIcon>
+        <MagnifyingGlassIcon
+          size="30"
+          color={"white"}
+          onPress={() => navigation.navigate(router.Search)}
+        ></MagnifyingGlassIcon>
       </View>
     </View>
   );
