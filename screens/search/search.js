@@ -5,6 +5,8 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import constant from "../../utils/constant";
+import FavoriteBody from "../../components/favorite/favoriteBody";
+import SearchBody from "../../components/search/searchBody";
 
 const Search = () => {
   const [allData, setallData] = useState([]);
@@ -27,6 +29,9 @@ const Search = () => {
         return item.title.toLowerCase().includes(value.toLowerCase());
       })
     );
+    if (value === "") {
+      setSelectedData([]);
+    }
     console.log(SelectedData);
   };
   return (
@@ -43,6 +48,7 @@ const Search = () => {
           <XMarkIcon size={30} color={"gray"}></XMarkIcon>
         </Pressable>
       </View>
+      <SearchBody data={SelectedData}></SearchBody>
     </View>
   );
 };
