@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "#1E201D",
     paddingTop: 32,
-    paddingHorizontal: 20,
+    paddingHorizontal: 14,
   },
 
 });

@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     paddingTop: 32,
-    paddingHorizontal: 20,
+    paddingHorizontal: 14,
     backgroundColor: "#1E201D",
   },
 });

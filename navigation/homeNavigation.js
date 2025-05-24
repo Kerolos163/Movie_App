@@ -3,7 +3,7 @@ import { Dimensions } from "react-native";
 import HomePage from "../screens/home/homePage";
 import FavoritePage from "../screens/favorite/favoritePage";
 import routes from "../utils/router";
-import { HomeIcon, StarIcon } from "react-native-heroicons/solid"; 
+import { HomeIcon, StarIcon } from "react-native-heroicons/solid";
 
 const { width } = Dimensions.get("window");
 const Drawer = createDrawerNavigator();
