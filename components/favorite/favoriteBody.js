@@ -1,11 +1,12 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import storage from "../../utils/local_storage";
 import FavoriteItem from "./favoriteItem";
+import { FavoriteContext } from "../../context/favoriteContextProvider";
 
 const FavoriteBody = () => {
-  const [favoriteItems, setfavoriteItems] = useState([]);
+  const { favoriteItems, setfavoriteItems } = useContext(FavoriteContext);
 
   useFocusEffect(
     useCallback(() => {

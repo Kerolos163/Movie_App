@@ -1,11 +1,19 @@
-import React from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { HeartIcon } from "react-native-heroicons/solid";
+import { StyleSheet, View, Image, Text, Pressable } from "react-native";
 import constant from "../../utils/constant";
 
 const FavoriteItem = ({ data }) => {
-  // console.log(data);
   return (
     <View style={styles.container}>
+      <Pressable
+        style={({ pressed }) => [
+          styles.IconStyle,
+          { opacity: pressed ? 0.5 : 1 },
+        ]}
+        onPress={() => console.log("Wesso")}
+      >
+        <HeartIcon size={36} color={"orange"}></HeartIcon>
+      </Pressable>
       <Image
         style={styles.imageStyle}
         source={{ uri: `${constant.imageUrl}/${data.item.poster_path}` }}
@@ -46,6 +54,12 @@ const styles = StyleSheet.create({
     top: "50%",
     left: "50%",
     transform: [{ translateX: "-50%" }],
+  },
+  IconStyle: {
+    zIndex: 2,
+    position: "absolute",
+    right: 5,
+    top: 5,
   },
 });
 

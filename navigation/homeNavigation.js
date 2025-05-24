@@ -4,6 +4,7 @@ import HomePage from "../screens/home/homePage";
 import FavoritePage from "../screens/favorite/favoritePage";
 import routes from "../utils/router";
 import { HomeIcon, StarIcon } from "react-native-heroicons/solid";
+import FavoriteContextProvider from "../context/favoriteContextProvider";
 
 const { width } = Dimensions.get("window");
 const Drawer = createDrawerNavigator();
@@ -35,14 +36,19 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name={routes.Favorite}
-        component={FavoritePage}
         options={{
           headerShown: false,
           drawerIcon: ({ color, size }) => (
             <StarIcon size={size || 24} color={color} />
           ),
         }}
-      />
+      >
+        {() => (
+          <FavoriteContextProvider>
+            <FavoritePage />
+          </FavoriteContextProvider>
+        )}
+      </Drawer.Screen>
     </Drawer.Navigator>
   );
 }
