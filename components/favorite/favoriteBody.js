@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View, Text, Image } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import storage from "../../utils/local_storage";
 import FavoriteItem from "./favoriteItem";
@@ -20,7 +20,7 @@ const FavoriteBody = () => {
     }, [])
   );
 
-  return (
+  return favoriteItems.length > 0 ? (
     <FlatList
       style={styles.constiner}
       showsHorizontalScrollIndicator={false}
@@ -33,6 +33,13 @@ const FavoriteBody = () => {
       numColumns={2}
       columnWrapperStyle={styles.column}
     ></FlatList>
+  ) : (
+    <View style={styles.emptyContainer}>
+      <Image
+        style={{ width: 300, height: 300 }}
+        source={require("../../assets/customSplash.png")}
+      ></Image>
+    </View>
   );
 };
 
@@ -44,6 +51,13 @@ const styles = StyleSheet.create({
     gap: 6,
     justifyContent: "flex-start",
     marginBottom: 6,
+  },
+  emptyContainer: {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
