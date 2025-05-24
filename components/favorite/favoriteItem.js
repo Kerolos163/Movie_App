@@ -3,9 +3,25 @@ import { StyleSheet, View, Image, Text, Pressable } from "react-native";
 import constant from "../../utils/constant";
 import { useNavigation } from "@react-navigation/native";
 import router from "../../utils/router";
+import storage from "../../utils/local_storage";
+import { FavoriteContext } from "../../context/favoriteContextProvider";
+import { useContext } from "react";
 
 const FavoriteItem = ({ data }) => {
   const navigation = useNavigation();
+  const { favoriteItems, setfavoriteItems } = useContext(FavoriteContext);
+
+  const removeFromFavorite = async (id) => {
+    const myMovies = await storage.load({
+      key: "favorite",
+    });
+    const newMovies = myMovies.filter((item) => id !== item.id);
+    setfavoriteItems([...newMovies]);
+    await storage.save({
+      key: "favorite",
+      data: newMovies,
+    });
+  };
   return (
     <Pressable
       onPress={() => navigation.navigate(router.Movie, data.item)}
@@ -20,7 +36,7 @@ const FavoriteItem = ({ data }) => {
             styles.IconStyle,
             { opacity: pressed ? 0.5 : 1 },
           ]}
-          onPress={() => console.log("Wesso")}
+          onPress={() => removeFromFavorite(data.item.id)}
         >
           <HeartIcon size={36} color={"orange"}></HeartIcon>
         </Pressable>
