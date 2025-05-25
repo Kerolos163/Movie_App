@@ -7,6 +7,7 @@ import MoviePage from "../screens/movie/moviePage";
 import Person from "../screens/person/person";
 import Search from "../screens/search/search";
 import routes from "../utils/router";
+import SeeAllPage from "../screens/seeAll/seeAllPage";
 
 const Stack = createNativeStackNavigator();
 const AppNavigation = () => {
@@ -31,6 +32,11 @@ const AppNavigation = () => {
         <Stack.Screen
           name={routes.Search}
           component={Search}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name={routes.SeeAll}
+          component={SeeAllPage}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

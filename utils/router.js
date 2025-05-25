@@ -4,4 +4,5 @@ export default Object.freeze({
   Person: "Person",
   Search: "Search",
   Favorite: "Favorite",
+  SeeAll: "SeeAll",
 });

@@ -21,7 +21,15 @@ const MoviesList = ({ data, header }) => {
     <View style={styles.wrapper}>
       <View style={styles.upComingStyle}>
         <Text style={styles.upComingTextStyle}>{header}</Text>
-        <Text style={styles.seeAllStyle}>See All</Text>
+        <Pressable
+          style={({ pressed }) => [
+            styles.Pressable,
+            { opacity: pressed ? 0.9 : 1 },
+          ]}
+          onPress={() => navigation.navigate(router.SeeAll, header)}
+        >
+          <Text style={styles.seeAllStyle}>See All</Text>
+        </Pressable>
       </View>
       <ScrollView
         horizontal
