@@ -1,13 +1,11 @@
-import { HeartIcon } from "react-native-heroicons/solid";
+import React from "react";
 import { StyleSheet, View, Image, Text, Pressable } from "react-native";
 import constant from "../../utils/constant";
 import { useNavigation } from "@react-navigation/native";
 import router from "../../utils/router";
 
-
-const SearchItem = ({ data }) => {
+const SeeAllItem = ({data}) => {
   const navigation = useNavigation();
-
   return (
     <Pressable
       onPress={() => navigation.navigate(router.Movie, data.item)}
@@ -23,9 +21,7 @@ const SearchItem = ({ data }) => {
             { opacity: pressed ? 0.5 : 1 },
           ]}
           onPress={() => removeFromFavorite(data.item.id)}
-        >
-          
-        </Pressable>
+        ></Pressable>
         <Image
           style={styles.imageStyle}
           source={{ uri: `${constant.imageUrl}/${data.item.poster_path}` }}
@@ -78,4 +74,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchItem;
+export default SeeAllItem;

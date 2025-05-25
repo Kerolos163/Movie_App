@@ -7,7 +7,7 @@ import MoviePage from "../screens/movie/moviePage";
 import Person from "../screens/person/person";
 import Search from "../screens/search/search";
 import routes from "../utils/router";
-import SeeAllPage from "../screens/seeAll/seeAllPage";
+import SeeAllPage from "../screens/seeAll/seeAllUpComing";
 
 const Stack = createNativeStackNavigator();
 const AppNavigation = () => {
