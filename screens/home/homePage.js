@@ -11,7 +11,7 @@ import CustomImageCarousel from "../../components/Home/customImageCarousel";
 
 const HomePage = () => {
   const [movies, dispatch] = useReducer(HomeReducer, []);
-  const [upcoming, setupcoming] = useState([]);
+  const [topRate, settopRate] = useState([]);
 
   useEffect(() => {
     axios
@@ -25,9 +25,9 @@ const HomePage = () => {
       });
 
     axios.get(
-      `${constant.baseUrl}/movie/popular?api_key=${constant.apiKey}`
+      `${constant.baseUrl}/movie/top_rated?api_key=${constant.apiKey}`
     ).then((response) => {
-      setupcoming([...response.data.results]);
+      settopRate([...response.data.results]);
     });
   }, []);
 
@@ -37,7 +37,7 @@ const HomePage = () => {
       {/* <CustomImageCarousel data={[1, 2, 3, 4, 5, 6, 7, 8]}></CustomImageCarousel> */}
 
       <MoviesList data={movies} header="UpComing"></MoviesList>
-      <MoviesList data={upcoming} header="Top Rate"></MoviesList>
+      <MoviesList data={topRate} header="Top Rate"></MoviesList>
     </View>
   );
 };

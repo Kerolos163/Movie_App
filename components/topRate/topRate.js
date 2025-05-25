@@ -4,11 +4,12 @@ import axios from "axios";
 import constant from "../../utils/constant";
 import SeeAllBody from "../seeAll/seeAllBody";
 
-const UpComing = () => {
+const TopRate = () => {
   const [upComing, setupComing] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+
   useEffect(() => {
     fetchData();
   }, [page]);
@@ -17,12 +18,10 @@ const UpComing = () => {
     if (!hasMore) {
       return;
     }
-
     setLoading(true);
-
     axios
       .get(
-        `${constant.baseUrl}/movie/upcoming?api_key=${constant.apiKey}&page=${page}`
+        `${constant.baseUrl}/movie/top_rated?api_key=${constant.apiKey}&page=${page}`
       )
       .then((response) => {
         console.log("response => ", response.data.page);
@@ -51,5 +50,4 @@ const UpComing = () => {
   return <SeeAllBody data={upComing} loadMore={loadMore}></SeeAllBody>;
 };
 
-
-export default UpComing;
+export default TopRate;
