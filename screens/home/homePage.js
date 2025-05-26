@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import CustomHeader from "../../components/customHeader";
 import styles from "./style";
 import MoviesList from "../../components/Home/MoviesList";
@@ -24,21 +24,26 @@ const HomePage = () => {
         });
       });
 
-    axios.get(
-      `${constant.baseUrl}/movie/top_rated?api_key=${constant.apiKey}`
-    ).then((response) => {
-      settopRate([...response.data.results]);
-    });
+    axios
+      .get(`${constant.baseUrl}/movie/top_rated?api_key=${constant.apiKey}`)
+      .then((response) => {
+        settopRate([...response.data.results]);
+      });
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      contentContainerStyle={{ paddingBottom: 60 }}
+      style={styles.container}
+    >
       <CustomHeader></CustomHeader>
-      <CustomImageCarousel data={[1, 2, 3, 4, 5, 6, 7, 8]}></CustomImageCarousel>
+      <CustomImageCarousel
+       
+      ></CustomImageCarousel>
 
-      {/* <MoviesList data={movies} header="UpComing"></MoviesList>
-      <MoviesList data={topRate} header="Top Rate"></MoviesList> */}
-    </View>
+      <MoviesList data={movies} header="UpComing"></MoviesList>
+      <MoviesList data={topRate} header="Top Rate"></MoviesList>
+    </ScrollView>
   );
 };
 

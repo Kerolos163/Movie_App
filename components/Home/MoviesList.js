@@ -10,7 +10,6 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import router from "../../utils/router";
 import constant from "../../utils/constant";
-
 import React, { useEffect, useState } from "react";
 
 const screenWidth = Dimensions.get("window").width;

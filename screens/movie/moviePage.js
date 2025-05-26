@@ -20,7 +20,7 @@ import storage from "../../utils/local_storage";
 
 const MoviePage = () => {
   const { params } = useRoute();
-  console.log("MoviePage data => ", params);
+  // console.log("MoviePage data => ", params);
   const screenWidth = Dimensions.get("window").width;
   const screenHeight = Dimensions.get("window").height;
   const navigation = useNavigation();
