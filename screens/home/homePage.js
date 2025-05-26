@@ -34,10 +34,10 @@ const HomePage = () => {
   return (
     <View style={styles.container}>
       <CustomHeader></CustomHeader>
-      {/* <CustomImageCarousel data={[1, 2, 3, 4, 5, 6, 7, 8]}></CustomImageCarousel> */}
+      <CustomImageCarousel data={[1, 2, 3, 4, 5, 6, 7, 8]}></CustomImageCarousel>
 
-      <MoviesList data={movies} header="UpComing"></MoviesList>
-      <MoviesList data={topRate} header="Top Rate"></MoviesList>
+      {/* <MoviesList data={movies} header="UpComing"></MoviesList>
+      <MoviesList data={topRate} header="Top Rate"></MoviesList> */}
     </View>
   );
 };
