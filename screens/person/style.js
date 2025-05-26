@@ -49,9 +49,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   overviewContainer: {
-    borderWidth: 2,
-    borderColor: "white",
-    boxShadow: "0px 0px 80px rgba(225, 225, 225, 0.85)",
+    // borderWidth: 1,
+    // borderColor: "white",
+    // boxShadow: "0px 0px 80px rgba(225, 225, 225, 0)",
     padding: 10,
     margin: 10,
     marginTop: 50,
