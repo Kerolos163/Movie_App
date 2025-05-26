@@ -8,6 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
+import { StarIcon } from "react-native-heroicons/solid";
 import { HeartIcon } from "react-native-heroicons/solid";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState, useEffect, useMemo } from "react";
@@ -115,6 +116,12 @@ const MoviePage = () => {
             <Text style={styles.releaseStyle}>
               Release {params.release_date}
             </Text>
+            <View style={styles.ratingContainer}>
+              <StarIcon color={"orange"}></StarIcon>
+              <Text style={{ fontSize: 18, color: "white", marginLeft: 6 }}>
+                {params?.vote_average.toFixed(1)}
+              </Text>
+            </View>
           </View>
         </View>
       </View>

@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 75,
     position: "absolute",
-    bottom: 55,
+    bottom: 40,
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   releaseStyle: {
     color: "gray",
-    
+
     marginTop: 10,
 
     fontSize: 16,
@@ -80,8 +80,14 @@ const styles = StyleSheet.create({
   },
   backArrowContainer: {
     position: "relative",
-    
   },
+  ratingContainer:{
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  }
 });
 
 export default styles;

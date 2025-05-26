@@ -45,7 +45,7 @@ const Search = () => {
           onChange={(e) => filterData(e)}
         ></TextInput>
         <Pressable style={styles.btn} onPress={() => navigation.goBack()}>
-          <XMarkIcon size={30} color={"gray"}></XMarkIcon>
+          <XMarkIcon size={30} color={"white"}></XMarkIcon>
         </Pressable>
       </View>
       <SearchBody data={SelectedData}></SearchBody>

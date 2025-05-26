@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
     position: "relative",
     left: "50%",
     transform: [{ translateX: "-50%" }],
-    paddingHorizontal: 10,
+    paddingLeft: 14,
+    paddingRight: 55,
   },
   SearchContainer: {
     width: "100%",
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     top: "20%",
     right: "8%",
     backgroundColor: "orange",
-    borderRadius: 20,
+    borderRadius: 17,
     padding: 8,
   },
 });
